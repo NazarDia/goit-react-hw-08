@@ -1,0 +1,9 @@
+.navItem {
+  display: inline-block;
+  padding: 12px;
+  font-weight: 700;
+  color: black;
+}
+.navItem:hover .navItem:focus .navItem:active {
+  color: #646cff;
+}

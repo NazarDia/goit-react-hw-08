@@ -5,11 +5,10 @@
   align-items: center;
   gap: 12px;
   padding: 12px 8px;
-  border: 1px solid white;
-  border-radius: 8px;
+  max-width: 280px;
   margin-bottom: 20px;
 }
-.formBtn {
+.regBtn {
   background-color: lightgrey;
   color: black;
   padding: 8px 12px;
@@ -17,8 +16,8 @@
   border-radius: 5px;
   cursor: pointer;
 }
-.formBtn:hover,
-.formBtn:focus {
+.regBtn:hover,
+.regBtn:focus {
   background-color: red;
   border: 2px solid black;
 }

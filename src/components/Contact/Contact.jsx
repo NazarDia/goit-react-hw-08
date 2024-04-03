@@ -1,10 +1,15 @@
 import { FaPhone, FaUser } from 'react-icons/fa';
-import css from './Contact.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contactsOps';
+import { deleteContact } from '../../redux/contacts/operations';
+import css from './Contact.module.css';
 
-const Contact = ({ contact: { id, name, number } }) => {
+export default function Contact({ item }) {
   const dispatch = useDispatch();
+  const { id, name, number } = item;
+
+  function handleClick() {
+    dispatch(deleteContact(id));
+  }
   return (
     <div className={css.contactContainer}>
       <div className={css.contactItems}>
@@ -17,13 +22,9 @@ const Contact = ({ contact: { id, name, number } }) => {
           {number}
         </p>
       </div>
-      <button
-        className={css.contactBtn}
-        onClick={() => dispatch(deleteContact(id))}
-      >
+      <button className={css.contactBtn} onClick={handleClick}>
         Delete
       </button>
     </div>
   );
-};
-export default Contact;
+}

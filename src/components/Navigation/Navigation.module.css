@@ -1,0 +1,10 @@
+.navLink {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 700;
+  color: black;
+}
+.navLink:hover .navLink:focus .navLink:active {
+  color: #646cff;
+}
