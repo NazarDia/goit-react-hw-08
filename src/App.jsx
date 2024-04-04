@@ -23,44 +23,45 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <Layout>
-      {isRefreshing ? (
-        <b>Refreshing user, please wait...</b>
-      ) : (
-        <Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route
-              path="/register"
-              element={
-                <RestrictedRoute
-                  component={<RegistrationPage />}
-                  redirectTo="/contacts"
-                />
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <RestrictedRoute
-                  component={<LoginPage />}
-                  redirectTo="/contacts"
-                />
-              }
-            />
-            <Route
-              path="/contacts"
-              element={
-                <PrivateRoute
-                  component={<ContactsPage />}
-                  redirectTo="/login"
-                />
-              }
-            />
-          </Routes>
-        </Suspense>
+    <>
+      {!isRefreshing && (
+        <Layout>
+          <Suspense fallback={null}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route
+                path="/register"
+                element={
+                  <RestrictedRoute
+                    component={<RegistrationPage />}
+                    redirectTo="/contacts"
+                  />
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <RestrictedRoute
+                    component={<LoginPage />}
+                    redirectTo="/contacts"
+                  />
+                }
+              />
+              <Route
+                path="/contacts"
+                element={
+                  <PrivateRoute
+                    component={<ContactsPage />}
+                    redirectTo="/login"
+                  />
+                }
+              />
+            </Routes>
+          </Suspense>
+        </Layout>
       )}
+      {isRefreshing && <b>Refreshing user, please wait...</b>}
       <Toaster />
-    </Layout>
+    </>
   );
 }
